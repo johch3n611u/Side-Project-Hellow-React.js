@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- ... 現存 HTML ... -->
+
+    <div id="like_button_container"></div>
+
+    <!-- ... 現存 HTML ... -->
+
+    <!-- ... 其他 HTML ... -->
+
+    <!-- 載入 React。 -->
+    <!-- 注意：在發佈應用程式前，請把「development.js」替換成「production.min.js」。 -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- 載入我們的 React component。-->
+    <!-- <script src="like_button.js"></script> -->
+    <script>
+        // ... 你貼上的 starter code ...
+        'use strict';
+
+        const e = React.createElement;
+
+        class LikeButton extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    liked: false
+                };
+            }
+
+            render() {
+                if (this.state.liked) {
+                    return 'You liked this.';
+                }
+
+                return e(
+                    'button', {
+                        onClick: () => this.setState({
+                            liked: true
+                        })
+                    },
+                    'Like'
+                );
+            }
+        }
+
+        const domContainer = document.querySelector('#like_button_container');
+        ReactDOM.render(e(LikeButton), domContainer);
+    </script>
+</body>
+
+</html>

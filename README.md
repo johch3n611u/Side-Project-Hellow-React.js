@@ -14,7 +14,7 @@
 
 * [Babel](https://zh.wikipedia.org/wiki/Babel_(%E7%B7%A8%E8%AD%AF%E5%99%A8)) 偏好的程式語言或風格來寫作原始碼，並將其利用 Babel 翻譯成 JavaScript
 
-官方提供做中學直接學習 React 但感覺這樣對內容可能會存在不了解，所以還是從閱讀[文件](https://zh-hant.reactjs.org/docs/getting-started.html)開始，並記錄筆記與心得於
+官方提供做中學直接學習 React 但感覺這樣對內容可能會存在不了解，所以還是從閱讀[文件](https://zh-hant.reactjs.org/docs/getting-started.html)開始，並記錄[筆記與心得]()
 
 ## xxx Demo
 
