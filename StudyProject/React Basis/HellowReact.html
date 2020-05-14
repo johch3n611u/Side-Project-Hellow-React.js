@@ -14,7 +14,29 @@
 
     <!-- ... 現存 HTML ... -->
 
-    <!-- ... 其他 HTML ... -->
+    <!-- ... Multiple React components on a single HTML page ... -->
+
+    <h2>Add React in One Minute</h2>
+    <p>This page demonstrates using React with no build tooling.</p>
+    <p>React is loaded as a script tag.</p>
+
+    <p>
+        This is the first comment.
+        <!-- We will put our React component inside this div. -->
+        <div class="like_button_container" data-commentid="1"></div>
+    </p>
+
+    <p>
+        This is the second comment.
+        <!-- We will put our React component inside this div. -->
+        <div class="like_button_container" data-commentid="2"></div>
+    </p>
+
+    <p>
+        This is the third comment.
+        <!-- We will put our React component inside this div. -->
+        <div class="like_button_container" data-commentid="3"></div>
+    </p>
 
     <!-- 載入 React。 -->
     <!-- 注意：在發佈應用程式前，請把「development.js」替換成「production.min.js」。 -->
@@ -55,6 +77,20 @@
 
         const domContainer = document.querySelector('#like_button_container');
         ReactDOM.render(e(LikeButton), domContainer);
+
+
+        // Find all DOM containers, and render Like buttons into them.
+        document.querySelectorAll('.like_button_container')
+            .forEach(domContainer => {
+                // Read the comment ID from a data-* attribute.
+                const commentID = parseInt(domContainer.dataset.commentid, 10);
+                ReactDOM.render(
+                    e(LikeButton, {
+                        commentID: commentID
+                    }),
+                    domContainer
+                );
+            });
     </script>
 </body>
 
