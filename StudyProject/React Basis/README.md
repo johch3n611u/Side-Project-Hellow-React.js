@@ -1,5 +1,19 @@
 # React Basis Version 16.13.1
 
+## 總結
+
+相對於 Vue 來說需要記憶的點確實蠻多的，但相對於 ng 來說又少一些，
+
+但基本上都大同小異都是對於 databinding 、狀態響應、 ui component 的設計。
+
+而因為很多既有的程式碼結構或資料結構會重複出現，所以就看 framework & cli 支援到哪種程度，又需要與其他多少東西相結合應用。
+
+覺得最大的差異是 state 管理與資料都建議由上而下，而 vue 與 ng 則是自動響應與可以互傳。
+
+## [Redux](https://zh.wikipedia.org/wiki/Redux_(JavaScript%E5%87%BD%E5%BC%8F%E5%BA%AB))
+
+Redux一個用於應用程式狀態管理的開源JavaScript庫。Redux經常與React搭配運用，但其也可以獨立使用。
+
 ## [安裝](https://zh-hant.reactjs.org/docs/getting-started.html)
 
 * [Re-introduction JS](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
@@ -2559,16 +2573,3 @@ React 將這種資料流明確表示出來，以便讓你能更容易理解你�
 
 希望這幫助你理解如何用 React 建立 component 和應用程式。雖然這可能需要你比你習慣的多打一些程式碼，請記得閱讀程式碼比起寫程式碼更常發生，而閱讀這種模組化、清晰明確的程式碼是非常容易的。當你開始建立大型的 component 函式庫時，你會很感激有這樣的明確性和模組性，而當你開始重複使用程式碼時，你的程式的行數會開始減少。:)
 
-## 總結
-
-相對於 Vue 來說需要記憶的點確實蠻多的，但相對於 ng 來說又少一些，
-
-但基本上都大同小異都是對於 databinding 、狀態響應、 ui component 的設計。
-
-而因為很多既有的程式碼結構或資料結構會重複出現，所以就看 framework & cli 支援到哪種程度，又需要與其他多少東西相結合應用。
-
-覺得最大的差異是 state 管理與資料都建議由上而下，而 vue 與 ng 則是自動響應與可以互傳。
-
-## [Redux](https://zh.wikipedia.org/wiki/Redux_(JavaScript%E5%87%BD%E5%BC%8F%E5%BA%AB))
-
-Redux一個用於應用程式狀態管理的開源JavaScript庫。Redux經常與React搭配運用，但其也可以獨立使用。
