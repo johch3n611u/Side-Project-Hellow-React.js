@@ -2567,6 +2567,8 @@ React 將這種資料流明確表示出來，以便讓你能更容易理解你�
 
 而因為很多既有的程式碼結構或資料結構會重複出現，所以就看 framework & cli 支援到哪種程度，又需要與其他多少東西相結合應用。
 
+覺得最大的差異是 state 管理與資料都建議由上而下，而 vue 與 ng 則是自動響應與可以互傳。
+
 ## [Redux](https://zh.wikipedia.org/wiki/Redux_(JavaScript%E5%87%BD%E5%BC%8F%E5%BA%AB))
 
 Redux一個用於應用程式狀態管理的開源JavaScript庫。Redux經常與React搭配運用，但其也可以獨立使用。
