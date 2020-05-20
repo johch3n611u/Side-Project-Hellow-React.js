@@ -24,13 +24,17 @@
 
 我想大概就是用不同的框架，寫同樣的功能與樣式了吧，來嘗試看看。
 
-## xxx Demo
+## Todo-List Demo
 
 ### Branch
 
 Now
 
+Version 1. todolist-simple (master)
+
 Expected
+
+ ̶V̶e̶r̶s̶i̶o̶n̶ ̶2̶.̶ ̶R̶e̶d̶u̶x̶ ̶S̶t̶a̶t̶e̶ ̶M̶a̶n̶a̶g̶e̶m̶e̶n̶t̶
 
 ## 參考
 
