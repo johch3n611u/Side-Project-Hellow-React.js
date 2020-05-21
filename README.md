@@ -24,6 +24,15 @@
 
 我想大概就是用不同的框架，寫同樣的功能與樣式了吧，來嘗試看看。
 
+## 問題
+
+* [vscode auto format 似乎不支援在 html內使用 jsx ... 變很麻煩](https://stackoverflow.com/questions/40498622/how-to-auto-indent-jsx-in-vscode)
+* [檔案分離後又讀取不到，必須添加 type="text/babel"...](https://stackoverflow.com/questions/28100644/reactjs-uncaught-syntaxerror-unexpected-token)
+* [迴圈渲染思考方式又跟其他框架或ssl框架不太一樣...](https://zh-hant.reactjs.org/docs/lists-and-keys.html)
+* [實作過程中遇到最麻煩的大概是 state 的提升與 state 互動問題，研究後發現其實蠻像 ng 的 service 的。](https://zh-hant.reactjs.org/docs/lifting-state-up.html#lifting-state-up)
+* [感覺一個按鈕就要寫一個單一事件 ... 跟 ng 跟 vue 比感覺頗麻煩。](https://stackoverflow.com/questions/27827234/how-to-handle-the-onkeypress-event-in-reactjs)
+* [而且其實也是很多預設屬性．．．](https://stackoverflow.com/questions/43556212/failed-form-proptype-you-provided-a-value-prop-to-a-form-field-without-an-on)
+
 ## Todo-List Demo
 
 ### Branch
@@ -39,3 +48,6 @@ Expected
 ## 參考
 
 * <https://zh-hant.reactjs.org/>
+* <https://ithelp.ithome.com.tw/articles/10201610>
+* <https://ithelp.ithome.com.tw/articles/10190581>
+* <https://cythilya.github.io/2017/04/01/todo-list-react-and-redux-example/>

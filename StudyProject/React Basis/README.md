@@ -14,6 +14,10 @@
 
 Redux一個用於應用程式狀態管理的開源JavaScript庫。Redux經常與React搭配運用，但其也可以獨立使用。
 
+## [Next.js](https://ithelp.ithome.com.tw/articles/10190581)
+
+## [Gatsby.js](https://ithelp.ithome.com.tw/articles/10201610)
+
 ## [安裝](https://zh-hant.reactjs.org/docs/getting-started.html)
 
 * [Re-introduction JS](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
