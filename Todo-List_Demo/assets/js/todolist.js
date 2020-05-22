@@ -220,26 +220,53 @@ class TodoListBody extends React.Component {
 
     handleListdisplay(whattodo) {
         console.log('whattodo:' + whattodo);
-        if (whattodo === 'show_all') {
-            // this.state.todos = this.state.todos;
-        } else if (whattodo === 'show_completed') {
-            // this.state.todos = this.getTodos(true);
-        } else { //show_incomplete
-            // this.state.todos = this.getTodos(false);
-        }
-        console.log('FALSE:' + this.getTodos(false));
-        console.log('TRUE:' + this.getTodos(true));
-        // this.setState(this.state);
+        // 轉換顯示類別 1. 分類出 全部 / 已完成 / 未完成
+        this.state = this.getTodosMode(this.state.todos, whattodo);
+        this.setState(this.state);
     }
 
-    getTodos(isCompleted) {
-        var list = [];
+    getTodosMode(showallTodos, whattodo) {
+        var showcompletedTodos = [];
+        var showincompleteTodos = [];
+        // newFackData 結構 1. todos 當作 prop 渲染用，依照 whattodo 動態置換 2. showallTodos , showcompletedTodos , showincompleteTodos
+        // show_all / show_incomplete / show_completed
+        var newFackData = {};
         for (var index in this.state.todos) {
-            if (this.state.todos[index].isCompleted === isCompleted) {
-                list[index] = this.state.todos[index];
+            if (this.state.todos[index].isCompleted === true) {
+                //show_completed
+                showcompletedTodos.push(this.state.todos[index]);
+            } else {//show_incomplete
+                showincompleteTodos.push(this.state.todos[index]);
             }
         }
-        return list;
+        // console.log(showcompletedTodos);
+        // console.log(showincompleteTodos);
+        // console.log(whattodo);
+
+        if (whattodo === 'show_all') {
+            newFackData = {
+                todos: showallTodos,
+                showallTodos: showallTodos,
+                showcompletedTodos: showcompletedTodos,
+                showincompleteTodos: showincompleteTodos
+            }
+        } else if (whattodo === 'show_completed') {
+            newFackData = {
+                todos: showcompletedTodos,
+                showallTodos: showallTodos,
+                showcompletedTodos: showcompletedTodos,
+                showincompleteTodos: showincompleteTodos
+            }
+        } else {
+            newFackData = {
+                todos: showincompleteTodos,
+                showallTodos: showallTodos,
+                showcompletedTodos: showcompletedTodos,
+                showincompleteTodos: showincompleteTodos
+            }
+        }
+        console.log(newFackData)
+        return newFackData;
     }
 
     render() {
@@ -254,7 +281,7 @@ class TodoListBody extends React.Component {
                     onEdit={this.handleEdit}
                     FackData={this.state} />
                 <TodoListDisplaySort onSort={this.handleListdisplay} FackData={this.state} />
-            </div >
+            </div>
         );
     }
 }
