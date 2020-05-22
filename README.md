@@ -37,7 +37,7 @@
 * [需要用到一堆高階函數解決問題．．．但確實　ｊｓ　會學很快　？？](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
 * 所有功能都完成了但就卡在最後一步，整個 list 必須要 sort 會有三種資料型態 1.全部 2.已完成 3.未完成，但又只有單一狀態能夠管控的時候感覺頗怪的，不知道是否要用到 redux 目前想到的方式只有 state 一種目的為渲染，然後再額外加上三種 list 至 fakedata 內 1. show_all todos 2. show_completed todos2 3. show_incomplete todos3...
 * [似乎又能用閉包的方式處理... 但不熟練不會用 ...](https://www.youtube.com/watch?v=TLIQUloXLec)
-* 大致功能大概完成，目前存在一些小缺陷，就等日後有空或實力更強時再補。
+* 大致功能大概完成，目前存在一些小缺陷，就等日後有空或實力更強時再補。 1. li 識別問題 影響到相關功能 2. sort 分類問題無狀態管理
 
 ## Todo-List Demo
 
