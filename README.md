@@ -22,7 +22,7 @@
 
 看完基礎後也做了總結，本來是想說照著教學實作，但最好理解又能複習的方式，
 
-我想大概就是用不同的框架，寫同樣的功能與樣式了吧，來嘗試看看。
+我想大概就是用不同的框架，寫同樣的功能與樣式了吧，來嘗試看看　todolist。
 
 ## 問題
 
@@ -32,6 +32,8 @@
 * [實作過程中遇到最麻煩的大概是 state 的提升與 state 互動問題，研究後發現其實蠻像 ng 的 service 的。](https://zh-hant.reactjs.org/docs/lifting-state-up.html#lifting-state-up)
 * [感覺一個按鈕就要寫一個單一事件 ... 跟 ng 跟 vue 比感覺頗麻煩。](https://stackoverflow.com/questions/27827234/how-to-handle-the-onkeypress-event-in-reactjs)
 * [而且其實也是很多預設屬性．．．](https://stackoverflow.com/questions/43556212/failed-form-proptype-you-provided-a-value-prop-to-a-form-field-without-an-on)
+* [需要用到一堆高階函數解決問題．．．但確實　ｊｓ　會學很快　？？](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+* 所有功能都完成了但就卡在最後一步，整個 list 必須要 sort 會有三種資料型態 1.全部 2.已完成 3.未完成，但又只有單一狀態能夠管控的時候感覺頗怪的，不知道是否要用到 redux ...
 
 ## Todo-List Demo
 

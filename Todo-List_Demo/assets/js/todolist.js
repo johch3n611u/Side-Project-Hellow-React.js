@@ -12,6 +12,15 @@ class TodoListHead extends React.Component {
 }
 
 class TodoListDisplaySort extends React.Component {
+    constructor(props) {
+        super(props);
+        // 為了讓 `this` 能在 callback 中被使用，這裡的綁定是必要的：
+        this.handleListdisplay = this.handleListdisplay.bind(this);
+    }
+    handleListdisplay(e) {
+        // console.log(e.target.value);
+        this.props.onSort(e.target.value);
+    }
     render() {
 
         const FackData = this.props.FackData;
@@ -21,9 +30,9 @@ class TodoListDisplaySort extends React.Component {
 
         return (
             <div>
-                <button >全部 ( {allCount}} )</button>
-                <button >已完成 ( {completedCount} )</button>
-                <button >未完成 ( {incompleteCount} )</button>
+                <button onClick={this.handleListdisplay} value='show_all'>全部 ( {allCount}} )</button>
+                <button onClick={this.handleListdisplay} value='show_incomplete'>已完成 ( {completedCount} )</button>
+                <button onClick={this.handleListdisplay} value='show_completed'>未完成 ( {incompleteCount} )</button>
             </div>
         );
     }
@@ -69,6 +78,7 @@ class TodoListTodos extends React.Component {
     }
 
     handleEditmode(e) {
+        // console.log('handleEditmode:' + e.target.id);
         this.props.onEditmode(e.target.id);
     }
     // https://stackoverflow.com/questions/27827234/how-to-handle-the-onkeypress-event-in-reactjs
@@ -91,22 +101,22 @@ class TodoListTodos extends React.Component {
         var TagMake = "";
         var ClassMake = "";
 
-        this.props.FackData.todos.forEach(FackData => {
-            // https://medium.com/@realdennis/array-%E5%8E%9F%E5%9E%8B%E7%9A%84-foreach-%E6%9C%89%E5%A4%9A%E5%A5%BD%E7%94%A8-%E5%AD%B8%E6%9C%83%E9%AB%98%E9%9A%8E%E5%87%BD%E6%95%B8%E4%B9%8B%E5%BE%8C%E9%83%BD%E4%B8%8D%E6%83%B3%E5%AF%AB-javascript-%E4%BB%A5%E5%A4%96%E7%9A%84%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E4%BA%86-dc4b594a045a
-            // console.log(FackData.isCompleted);
-            if (FackData.isEdit == false) {
+        // console.log(this.props.FackData.todos);
 
+        this.props.FackData.todos.forEach((FackData, index) => {
+            // https://medium.com/@realdennis/array-%E5%8E%9F%E5%9E%8B%E7%9A%84-foreach-%E6%9C%89%E5%A4%9A%E5%A5%BD%E7%94%A8-%E5%AD%B8%E6%9C%83%E9%AB%98%E9%9A%8E%E5%87%BD%E6%95%B8%E4%B9%8B%E5%BE%8C%E9%83%BD%E4%B8%8D%E6%83%B3%E5%AF%AB-javascript-%E4%BB%A5%E5%A4%96%E7%9A%84%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E4%BA%86-dc4b594a045a
+            //console.log(index)
+            if (FackData.isEdit == false) {
                 if (FackData.isCompleted == true) {
                     ClassMake = 'completed';
                 } else {
                     ClassMake = '';
                 }
-
                 TagMake =
                     <div>
                         <label className={ClassMake}>
                             <input
-                                id={FackData.id}
+                                id={index}
                                 className="chkbox"
                                 type="checkbox"
                                 defaultChecked={FackData.isCompleted}
@@ -114,8 +124,8 @@ class TodoListTodos extends React.Component {
                             {FackData.title}
                         </label>
                         <span className="todo-list-todos-controller">
-                            <button id={FackData.id} onClick={this.handleEditmode}>編輯</button>
-                            <button id={FackData.id} onClick={this.handleDeleteli}>刪除</button>
+                            <button id={index} onClick={this.handleEditmode}>編輯</button>
+                            <button id={index} onClick={this.handleDeleteli}>刪除</button>
                         </span >
                     </div>;
             } else {
@@ -123,22 +133,19 @@ class TodoListTodos extends React.Component {
                     <div>
                         {/* https://stackoverflow.com/questions/27827234/how-to-handle-the-onkeypress-event-in-reactjs */}
                         {/* https://stackoverflow.com/questions/43556212/failed-form-proptype-you-provided-a-value-prop-to-a-form-field-without-an-on */}
-                        <input id={FackData.id} type="text" defaultValue={FackData.title} onKeyPress={this.handleEdit} />
+                        <input id={index} type="text" defaultValue={FackData.title} onKeyPress={this.handleEdit} />
                         <span className="todo-list-todos-controller">
-                            <button id={FackData.id} onClick={this.handleDeleteli}>刪除</button>
+                            <button id={index} onClick={this.handleDeleteli}>刪除</button>
                         </span>
                     </div>
                     ;
             }
-
             liItem.push(
-                <li key={FackData.id} className="todo-item">
+                <li key={index} className="todo-item">
                     {TagMake}
                 </li>
             )
-
         });
-
         return (
             <ul className="todo-list-todos">
                 {liItem}
@@ -157,36 +164,38 @@ class TodoListBody extends React.Component {
         this.handleEditmode = this.handleEditmode.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
         this.handleAddtodo = this.handleAddtodo.bind(this);
+        this.handleListdisplay = this.handleListdisplay.bind(this);
     }
 
     // 這裡與傳遞到子元件的命名是一樣的只差在子元件模板那要注入事件到子元件，再由子元件反饋監聽物件到父元件這做處理。
     handleDeleteli(id) {
         // console.log(id);
         // console.log(this.state);
-        const tdlenght = this.state.todos.lenght;
-        this.state.todos.splice(tdlenght - id, 1);
+        this.state.todos.splice(id, 1);
+        // console.log(this.state.todos.filter(id => id = iad));
         this.setState(this.state);
     }
 
     handleCheckbox(id) {
         // console.log(id);
-        if (this.state.todos[(id - 1)].isCompleted == false) {
-            this.state.todos[(id - 1)].isCompleted = true;
+        if (this.state.todos[id].isCompleted == false) {
+            this.state.todos[id].isCompleted = true;
         } else {
-            this.state.todos[(id - 1)].isCompleted = false;
+            this.state.todos[id].isCompleted = false;
         }
         // console.log(this.state);
         this.setState(this.state);
     }
 
     handleEditmode(id) {
-        // console.log(id);
+        // console.log('handleEditmode2:' + id);
         // console.log(this.state);
-        if (this.state.todos[(id - 1)].isEdit == false) {
-            this.state.todos[(id - 1)].isEdit = true;
+        if (this.state.todos[id].isEdit == false) {
+            this.state.todos[id].isEdit = true;
         } else {
-            this.state.todos[(id - 1)].isEdit = false;
+            this.state.todos[id].isEdit = false;
         }
+        // console.log(this.state);
         this.setState(this.state);
     }
 
@@ -194,16 +203,43 @@ class TodoListBody extends React.Component {
     handleEdit(id, title) {
         // console.log(id);
         // console.log(title);
-        this.state.todos[(id - 1)].title = title;
-        this.state.todos[(id - 1)].isEdit = false;
+        // console.log(this.state);
+        this.state.todos[id].title = title;
+        this.state.todos[id].isEdit = false;
+        // console.log(this.state);
         this.setState(this.state);
     }
 
     handleAddtodo(title) {
-        console.log('handleAddtodo:' + title);
+        // console.log('handleAddtodo:' + title);
+        const newid = this.state.todos.length + 1;
+        const newitem = { id: newid, title: title, isEdit: false, isCompleted: false, }
+        this.state.todos.push(newitem);
+        this.setState(this.state);
+    }
 
-        // this.state.todos.push();
+    handleListdisplay(whattodo) {
+        console.log('whattodo:' + whattodo);
+        if (whattodo === 'show_all') {
+            // this.state.todos = this.state.todos;
+        } else if (whattodo === 'show_completed') {
+            // this.state.todos = this.getTodos(true);
+        } else { //show_incomplete
+            // this.state.todos = this.getTodos(false);
+        }
+        console.log('FALSE:' + this.getTodos(false));
+        console.log('TRUE:' + this.getTodos(true));
         // this.setState(this.state);
+    }
+
+    getTodos(isCompleted) {
+        var list = [];
+        for (var index in this.state.todos) {
+            if (this.state.todos[index].isCompleted === isCompleted) {
+                list[index] = this.state.todos[index];
+            }
+        }
+        return list;
     }
 
     render() {
@@ -217,14 +253,13 @@ class TodoListBody extends React.Component {
                     onEditmode={this.handleEditmode}
                     onEdit={this.handleEdit}
                     FackData={this.state} />
-                <TodoListDisplaySort FackData={this.state} />
+                <TodoListDisplaySort onSort={this.handleListdisplay} FackData={this.state} />
             </div >
         );
     }
 }
 
 const FackData = {
-    newTodoText: '',
     todos: [{
         id: 1,
         title: '吃早餐',
@@ -241,8 +276,6 @@ const FackData = {
         isEdit: false,
         isCompleted: true,
     }],
-    nextTodoId: 4,
-    filter: 'show_all'
 };
 
 ReactDOM.render(
